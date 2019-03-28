@@ -6,7 +6,7 @@ class UserInput extends Component {
   constructor(props){
     super(props);
     this.state = {
-      value: '',
+      userString: '',
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -15,26 +15,58 @@ class UserInput extends Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+
+    let emojiString = event.target.value
+
+    this.setState({
+      userString: emojiString
+    });
   }
 
   handleSubmit(event) {
-    document.write(this.state.value);
+
+    let emojiArray = ['😀', '😂', '🤩']
+
+    let emojiString = this.state.userString
+
+    console.log(emojiString.length)
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+    
+    for (var i = 0; i < emojiString.length; i++) {
+        if (emojiString[i] === ' '){
+          document.write(emojiArray[getRandomInt(emojiArray.length)])
+      }
+    }
+
+    document.write(emojiString);
     event.preventDefault();
   }
 
+  
+
   render() {
+
+    console.log(this.state.userString)
+
+
     return (
-      <div className="user-input">
+      <div className="user-input boxsizingBorder">
 
       <form onSubmit = {this.handleSubmit}>
         <label>
           Got anything to say? 
-          <input 
+          <br/><br/>
+          <textarea 
+          rows = "20"
+          cols = "50"
           type = "text" 
-          value = {this.state.value} 
+          value = {this.state.userString} 
           onChange = {this.handleChange}
           />
+          <br/> <br/>
         </label>
         <input 
         type = "submit"
@@ -44,9 +76,20 @@ class UserInput extends Component {
       
       </form>      
 
+
       </div>
+
+      
     );
+
+    
+
   }
+
+  
+  
 }
+
+
 
 export default UserInput;
