@@ -16,7 +16,28 @@ class UserInput extends Component {
 
   handleChange(event) {
 
+    function getRandomEmoji(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    // get random emoji: emojiArray[getRandomEmoji(emojiArray.length)]
+
+    let emojiArray = ['😀', '😂', '🤩']
     let emojiString = event.target.value
+    let testArray = []
+
+    for (var i = 0; i < emojiString.length; i++) {
+      if (emojiString[i] === ' '){
+        console.log("Found a space!")
+        testArray.push(emojiArray[getRandomEmoji(emojiArray.length)])
+    } else {
+      testArray.push(emojiString[i])
+    }
+  }
+
+  testArray = testArray.toString()
+
+  console.log(testArray)
 
     this.setState({
       userString: emojiString
@@ -25,23 +46,28 @@ class UserInput extends Component {
 
   handleSubmit(event) {
 
-    let emojiArray = ['😀', '😂', '🤩']
-
-    let emojiString = this.state.userString
-
-    console.log(emojiString.length)
-
-    function getRandomInt(max) {
+    function getRandomEmoji(max) {
       return Math.floor(Math.random() * Math.floor(max));
     }
-    
-    for (var i = 0; i < emojiString.length; i++) {
-        if (emojiString[i] === ' '){
-          document.write(emojiArray[getRandomInt(emojiArray.length)])
-      }
-    }
 
-    document.write(emojiString);
+    let emojiArray = ['😀', '😂', '🤩']
+    let emojiString = this.state.userString
+    let testArray = []
+
+    for (var i = 0; i < emojiString.length; i++) {
+      if (emojiString[i] === ' '){
+        console.log("Found a space!")
+        testArray.push(emojiArray[getRandomEmoji(emojiArray.length)])
+    } else {
+      testArray.push(emojiString[i])
+    }
+  }
+
+  testArray = testArray.toString()
+
+  console.log(testArray)
+
+    document.write(testArray);
     event.preventDefault();
   }
 
