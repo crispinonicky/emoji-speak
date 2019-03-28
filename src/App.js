@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Input from './components/Input';
+import UserInput from './components/UserInput';
 
 
 
@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
 
-      <Input/>
+      <UserInput/>
       
       </div>
     );
